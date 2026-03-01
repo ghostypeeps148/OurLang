@@ -5,7 +5,7 @@
 int main(){
 	uint32_t *x = malloc(1);
 	if(x == NULL){
-		return -1
+		return -1;
 	}
 	
 	for (uint32_t i = 0; i < 0xFFFFFFFF - 1; i++){
