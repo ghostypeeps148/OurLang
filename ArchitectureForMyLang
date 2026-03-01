@@ -38,6 +38,7 @@ return ____, _____, and ______
 
 for 10 times
 
+
 The MyLang Language Architecture
 
 Key: <x> = variable/data | {} = comment 
@@ -52,45 +53,47 @@ from <x> import <y>
 
 Python / C Standard	MyLang Translation (=)
 print(<x>) / printf(<x>)	= write: <var, or data, or text>
-input() / scanf()	        = get: -tags to specify what 
-input(int) / scanf("%d")	
-input(str) / scanf("%s")	
+input() / scanf()	        = get: -tags to specify what
+
 3. Data Types & Values -----------------------------------------------------------
 
 Python / C Standard	MyLang Translation (=)
-str (String)	
-int (Integer)	
-bool (Boolean)	
-float (Decimal)	
-None / NULL	
-True / 1	
-False / 0	
+str (String)	= -str
+int (Integer)	= -int
+bool (Boolean)	= -bool
+float (Decimal)	= -float
+None / NULL	    = -nil
+True / 1	    = True / 1
+False / 0	    = False / 0
+
 4. Control Flow (Logic) -----------------------------------------------------------
 
 Python / C Standard	MyLang Translation (=)
-if <condition>:	
-elif <condition>:	
-else:	
-while <condition>:	
-for i in range(<x>):	
-break (exit loop)	
-continue (skip iteration)	
+if <condition>:	        = if <condition> is True
+elif <condition>:	    = otherwise if <condition> is True
+else:	                = otherwise
+while <condition>:	    = while <condition> is True
+for i in range(<x>):	= for <x.times or x.seconds or other units> -i {use i tag to keep track of iteration}
+break (exit loop)	    = snap
+continue (skip iteration) = leave
+
 5. Logic Operators -----------------------------------------------------------
 
 Python / C Standard	MyLang Translation (=)
-and / &&	
-or / ||	
-not / !	
-== (is equal)	
-!= (is not equal)	
+and / &&	= and
+or / ||	    = or
+not / !	    = not
+== (is equal) =	==
+!= (is not equal)	=  !=
+
 6. Functions -----------------------------------------------------------
 
 Python / C Standard	MyLang Translation (=)
-def <name>(<args>):	
+def <name>(<args>):	            = def <name> take <input>, <input>, <input>
 return <x>	
 7. String Power Tools (Custom for MyLang) -----------------------------------------------------------
 
 Python / C Logic	MyLang Translation (=)
-str += " " (Add space)	
+str += " " (Add space)	   =  str += <anything>            {}
 str = str[:-1] (Remove last char)	
 len(str) (Get length)
