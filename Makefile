@@ -4,9 +4,9 @@ OURLANG_ROOT      :=  $(shell pwd)
 
 SRCDIR            :=  $(OURLANG_ROOT)/src
 INCDIR            :=  $(OURLANG_ROOT)/include
+TESTDIR           :=  $(OURLANG_ROOT)/tests
 OBJDIR            :=  $(OURLANG_ROOT)/obj
 BINDIR            :=  $(OURLANG_ROOT)/bin
-TESTDIR           :=  $(OURLANG_ROOT)/tests
 
 TARGET            :=  lang
 
@@ -35,10 +35,12 @@ CC_OUTS           :=  $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(CC_SRCS))
 
 MAKE              :=  make
 
-all: $(CC_OUTS) Link
+all: init $(CC_OUTS) Link
 # Run tests
   $(MAKE) -f $(TESTDIR)/Makefile
 
+init:
+  mkdir -p $(OBJDIR) $(BINDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
   @echo
