@@ -33,3 +33,52 @@ interpret.c
   * 1. Execute actual code
   
 */
+#include "parse.h"
+#include "util.h"
+int parse_lines(char* source) {
+  // Duplicates string (might not be necessary) (but strtok modifies input so may cause weird errors idk)
+  char *parseable = strdup(source);
+  // Parse
+
+  char *token;
+
+  const char *delim = "\n";
+
+  int line_num = 1;
+
+  token = strtok(parseable, delim);
+
+  while (token != NULL) {    
+    printf("DEBUG: Line no: %d\n", line_num);
+    if (token[0] == '#') {
+      // comment
+      printf("DEBUG: Comment, skipping\n");
+    } else {
+      parse_line(token, line_num);
+    }
+    line_num++;
+    token = strtok(NULL, delim);
+  }
+
+  // Succeeded! Return 0
+  return 0;
+}
+
+int parse_line(char* line, int line_number) {
+  // Kinda validates the line (add more checks!)
+  // Any string containing only letters for opcode and on the right can be anything
+  // Please add more checks and/or improve this 
+  printf("DEBUG: Line %d, parsing\n", line_number);
+  char *opcode;
+  char *parameter;
+  opcode = strtok(strdup(line), ":");
+  parameter = strtok(NULL, ":");
+
+  if (parameter == NULL || opcode == NULL) {
+    fprintf(stderr, "Syntax error: Something is malformed on line %d.\n", line_number);
+    return -1;
+  }
+  printf("Opcode: %s\n", trim_leading_spaces(opcode));
+  printf("Input: %s\n", trim_leading_spaces(parameter)); 
+  return 0;
+}

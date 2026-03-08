@@ -1,0 +1,5 @@
+# This should cause an syntax error.
+1234abcdefhjk: soup
+# This should also cause a syntax error.
+asdfasdfasdfsdfasdf
+

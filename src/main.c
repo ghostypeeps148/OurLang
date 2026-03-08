@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "parse.h"
 char* read_source_file(const char* path) {
     FILE* file = fopen(path, "rb");
     if (file == NULL) {
@@ -42,7 +42,9 @@ int main(int argc, char* argv[]) {
     char* source = read_source_file(argv[1]);
 
     printf("Source Code:\n%s\n", source);
-
+    
+    parse_lines(source);
+    
     free(source);
     return 0;
 }
